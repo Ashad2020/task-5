@@ -52,14 +52,16 @@ function cleanUpString(str) {
 
 function processArray(arr) {
   const keys = ["name", "age"];
-  let newArr = arr.map((item) =>
-    item.split("-").reduce((obj, value, index) => {
-      obj[keys[index]] = value;
-      return obj;
-    }, {})
-  );
+  let newArr = arr
+    .map((item) =>
+      item.split("-").reduce((obj, value, index) => {
+        obj[keys[index]] = value;
+        return obj;
+      }, {})
+    )
+    .filter((item) => item.age > 18);
   return newArr;
 }
 const input = ["Zohan-25", "Wafi-17", "Saher-19"];
-// console.log(processArray(input));
+console.log(processArray(input));
 // Output: [{ name: "Zohan", age: 25 }, { name: "Saher", age: 19 }]
